@@ -1,0 +1,36 @@
+{
+  "$schema": "https://sovereign.dev/schemas/package/1.0.0",
+  "id": "matrix",
+  "name": "Matrix Chat",
+  "version": "1.0.0",
+  "description": "Federated messaging with Citadel identity integration via hook_user_sync",
+  "license": "AGPL-3.0",
+  "author": {
+    "name": "Sovereign Infrastructure Team",
+    "url": "https://opensovereign.dev"
+  },
+  "kind": "package",
+  "taxonomy": {
+    "tier": "opt",
+    "relations": [
+      { "type": "depends", "target": "sovctl" }
+    ]
+  },
+  "tags": ["service", "communication", "federation", "chat"],
+  "upstream": {
+    "name": "Matrix (Synapse)",
+    "homepage": "https://matrix.org",
+    "license": "Apache-2.0"
+  },
+  "contents": {
+    "plugin": null,
+    "gitops": {
+      "kustomization": "k8s/kustomization.yaml",
+      "resources": "k8s/"
+    },
+    "container": {
+      "image": "matrixdotorg/synapse:latest",
+      "compose": "docker/compose.yaml"
+    }
+  }
+}

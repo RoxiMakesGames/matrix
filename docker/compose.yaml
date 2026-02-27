@@ -1,0 +1,31 @@
+# ─────────────────────────────────────────────────────────────────
+# matrix — Docker Compose merge fragment
+#
+# This file is merged into the main docker-compose.yaml by sovctl:
+#   sovctl package install matrix
+#
+# Manual usage:
+#   docker compose -f docker-compose.yaml -f packages/matrix/docker/compose.yaml up -d
+# ─────────────────────────────────────────────────────────────────
+services:
+  matrix:
+    image: matrixdotorg/synapse:latest
+    container_name: sovereign-matrix
+    restart: unless-stopped
+    ports:
+      - "${MATRIX_PORT:-8008}:8008"
+    environment:
+      - TZ=${TZ:-UTC}
+    volumes:
+      - matrix-data:/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.matrix.rule=Host(`matrix.${SOV_HOST:-sovereign.local}`)
+      - traefik.http.routers.matrix.entrypoints=websecure
+      - traefik.http.routers.matrix.tls.certresolver=letsencrypt
+    networks:
+      - sovereign
+
+volumes:
+  matrix-data:
+    driver: local
