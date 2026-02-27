@@ -1,5 +1,5 @@
 {
-  "$schema": "https://sovereign.dev/schemas/package/1.0.0",
+  "$schema": "https://raw.githubusercontent.com/RoxiMakesGames/sovpak/main/schema/sovpak-v3.schema.json",
   "id": "matrix",
   "name": "Matrix Chat",
   "version": "1.0.0",
@@ -13,10 +13,18 @@
   "taxonomy": {
     "tier": "opt",
     "relations": [
-      { "type": "depends", "target": "sovctl" }
+      {
+        "type": "depends",
+        "target": "sovctl"
+      }
     ]
   },
-  "tags": ["service", "communication", "federation", "chat"],
+  "tags": [
+    "service",
+    "communication",
+    "federation",
+    "chat"
+  ],
   "upstream": {
     "name": "Matrix (Synapse)",
     "homepage": "https://matrix.org",
