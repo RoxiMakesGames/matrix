@@ -11,7 +11,7 @@
   },
   "kind": "package",
   "taxonomy": {
-    "tier": "opt",
+    "tier": "core",
     "relations": [
       {
         "type": "depends",
