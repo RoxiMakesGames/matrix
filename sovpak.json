@@ -33,7 +33,7 @@
   "deployments": [
     {
       "platform": "kubernetes",
-      "path": "k8s/",
+      "path": "infra/",
       "files": {
         "kustomization": "kustomization.yaml"
       }
